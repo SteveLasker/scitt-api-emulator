@@ -4,9 +4,9 @@
 from typing import Mapping
 from scitt_emulator.scitt import SCITTServiceEmulator
 from scitt_emulator.ccf import CCFSCITTServiceEmulator
-from scitt_emulator.rkvst import RKVSTSCITTServiceEmulator
+from scitt_emulator.datatrails import DataTrailsSCITTServiceEmulator
 
 TREE_ALGS: Mapping[str, SCITTServiceEmulator] = {
     "CCF": CCFSCITTServiceEmulator,
-    "RKVST": RKVSTSCITTServiceEmulator,
+    "DataTrails": DataTrailsSCITTServiceEmulator,
 }

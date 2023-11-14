@@ -48,7 +48,7 @@ conda activate scitt
 The proxy server supports 2 options currently:
 
 - 'CCF' uses the emulator server to create and verify receipts using the CCF tree algorithm
-- 'RKVST' uses the RKVST production SaaS server to create and verify  receipts using native Merkle trees
+- 'DataTrails' uses the DataTrails production SaaS server to create and verify  receipts using native Merkle trees
 
 **Note:** _the emulator is for experimentation only and not recommended for production use._
 
@@ -60,18 +60,18 @@ The proxy server supports 2 options currently:
     ./scitt-emulator.sh server --workspace workspace/ --tree-alg CCF
     ```
 
-1. The server is running at http://localhost:8000/ and uses the `workspace/` folder to store the service parameters and service state  
+1. The server is running at http://localhost:8000/ and uses the `/workspace` folder to store the service parameters and service state  
   **Note:** _The default port is `8000` but can be changed with the `--port` argument._
 1. Start another shell to run the test scripts, leaving the above shell for diagnostic output
 1. Skip to [Create Claims](#create-claims)
 
-### Start an RKVST SCITT Proxy Service
+### Start a DataTrails SCITT Proxy Service
 
-1. Start the service, under the `/workspace` directory, using RKVST  
+1. Start the service, under the `/workspace` directory, using DataTrails  
   The default port is `8000` but can be changed with the `--port` argument.
 
     ```sh
-    ./scitt-emulator.sh server --workspace workspace/ --tree-alg RKVST
+    ./scitt-emulator.sh server --workspace workspace/ --tree-alg DataTrails
     ```
 
 ### Executing Commands
@@ -205,9 +205,9 @@ The following websites can be used to inspect COSE and CBOR files:
 For each claim, a receipt is generated using a fake but valid Merkle tree that is independent of other submitted claims.
 A real CCF service would maintain a single Merkle tree covering all submitted claims and auxiliary entries.
 
-`scitt_emulator/rkvst.py` is a simple REST proxy that takes SCITT standard API calls and routes them through to the [RKVST production SaaS service](https://app.rkvst.io).
-Each claim is stored in a Merkle tree underpinning a Quorum blockchain and receipts contain valid, verifiable inclusion proofs for the claim in that Merkle proof.
-[More docs on receipts here](https://docs.rkvst.com/platform/overview/scitt-receipts/).
+`scitt_emulator/datatrails.py` is a simple REST proxy that takes SCITT standard API calls and routes them through to the [DataTrails production SaaS service](https://app.datatrails.ai).
+Each claim is stored in a Merkle tree underpinning a Quorum blockchain and  receipts contain valid, verifiable inclusion proofs for the claim in that Merkle proof.
+[More docs on receipts here](https://docs.datatrails.ai/platform/overview/scitt-receipts/).
 
 `scitt_emulator/server.py` is a simple Flask server that acts as a SCITT transparency service.
 

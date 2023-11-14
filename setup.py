@@ -19,13 +19,6 @@ setup(
         "pycose",
         "httpx",
         "flask",
-        "rkvst-archivist"
+        "datatrails-archivist"
     ],
-    extras_require={
-        "oidc": [
-            "PyJWT",
-            "jwcrypto",
-            "jsonschema",
-        ]
-    },
 )
